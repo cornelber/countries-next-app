@@ -2,32 +2,37 @@ import { useRouter } from "next/navigation";
 import { useToast } from "./use-toast";
 import { signIn } from "next-auth/react";
 
-
 export function useAuth() {
-    const {toast} = useToast();
-    const router = useRouter();
+  const { toast } = useToast();
+  const router = useRouter();
 
-    const handleAuth = async (
-        provider: "credentials" | "github",
-        credentials?: {username: string, password: string}
-    ) => {
-        try {
-            const result = await signIn(provider, {
-                redirect: false,
-                ...(provider === "credentials" && credentials),
-            })
+  const handleAuth = async (
+    provider: "credentials" | "github",
+    credentials?: { username: string; password: string }
+  ) => {
+    try {
+      if (provider === "github") {
+        await signIn("github", { callbackUrl: "/dashboard" });
+        return;
+      }
 
-            if (result?.error) {
-                throw new Error(result.error);
-            }
+      const result = await signIn("credentials", {
+        redirect: false,
+        ...credentials,
+      });
 
-            router.push("/dashboard");
-        } catch (error) {
-            const message = error instanceof Error ? error.message : "An unknown error occurred";
+      if (result?.error) {
+        throw new Error(result.error);
+      }
 
-            toast({
-                title: "Error",
-                description: `Authentication failed: ${message}`,
+      router.push("/dashboard");
+    } catch (error) {
+      const message =
+        error instanceof Error ? error.message : "An unknown error occurred";
+
+      toast({
+        title: "Error",
+        description: `Authentication failed: ${message}`,
         variant: "destructive",
       });
       return { error: message };

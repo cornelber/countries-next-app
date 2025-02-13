@@ -3,7 +3,7 @@ import { Button, buttonVariants } from "../ui/button";
 
 export default function Header() {
   return (
-    <header className="fixed w-screen bg-slate-200">
+    <header className="fixed w-screen backdrop-blur-md">
       <div className="p-5 grid grid-cols-3">
         <div className="logo">
           <Link

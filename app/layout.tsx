@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import "./globals.css";
+import SessionProvider from "@/context/SessionProvider";
 
 export const metadata: Metadata = {
   title: "Countries Next App",
@@ -13,9 +14,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>
-            {children}
-      </body>
+      <body><SessionProvider>{children}</SessionProvider></body>
     </html>
   );
 }

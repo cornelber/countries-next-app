@@ -6,7 +6,7 @@ import { useAuth } from "@/hooks/use-auth";
 import { Github, User2Icon } from "lucide-react";
 
 export default function LoginPage() {
-  const {handleAuth} = useAuth();
+  const { handleAuth } = useAuth();
 
   return (
     <PublicSection>
@@ -18,13 +18,23 @@ export default function LoginPage() {
           Sign in to explore countries and plan your next adventure.
         </p>
         <div className="grid grid-cols-2 gap-6 px-6">
-          <Button className="flex flex-wrap h-max" onClick={() => handleAuth("credentials", {username: "test", password: "testtest"})}>
-            {" "}
+          <Button
+            className="flex flex-wrap h-max"
+            onClick={() =>
+              handleAuth("credentials", {
+                username: "test",
+                password: "testtest",
+              })
+            }
+          >
             <User2Icon />
             Sign in with Test User
           </Button>
-          <Button className="flex flex-wrap h-max" variant={"secondary"}>
-            {" "}
+          <Button
+            className="flex flex-wrap h-max"
+            variant={"secondary"}
+            onClick={() => handleAuth("github")}
+          >
             <Github /> Sign in with Github
           </Button>
         </div>
