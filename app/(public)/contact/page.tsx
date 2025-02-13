@@ -1,3 +1,5 @@
+import PublicSection from "@/components/ui/section";
+
 export default function ContactPage() {
-    return <>Contact page works!</>
+    return <PublicSection>Contact page works!</PublicSection>
   }

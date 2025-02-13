@@ -1,4 +1,5 @@
+import PublicSection from "@/components/ui/section";
 
 export default function AboutPage() {
-    return <>About page works!</>
+    return <PublicSection>About page works!</PublicSection>
   }

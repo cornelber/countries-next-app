@@ -1,3 +1,5 @@
+import PublicSection from "@/components/ui/section";
+
 export default function Home() {
-  return <>Hello World</>
+  return <PublicSection>Hello World</PublicSection>
 }
