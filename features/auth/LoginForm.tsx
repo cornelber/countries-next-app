@@ -13,16 +13,12 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-import { signIn } from "next-auth/react";
-import { useRouter } from "next/navigation";
+import { useAuth } from "@/hooks/use-auth";
 
 
-interface LoginFormProps {
-  handleError: (message: string) => void;
-}
 
-export function LoginForm({handleError} : LoginFormProps) {
-  const router = useRouter();
+export function LoginForm() {
+  const {handleAuth} = useAuth();
 
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
@@ -33,28 +29,7 @@ export function LoginForm({handleError} : LoginFormProps) {
   });
 
   async function onSubmit(values: LoginSchemaType) {
-    try {
-      handleError("");
-
-      const result = await signIn<"credentials">("credentials", {
-        redirect: false,
-        username: values.username,
-        password: values.password
-      });
-
-      if (result?.error) {
-        handleError("Invalid credentials");
-        return;
-      }
-
-      router.push("/dashboard");
-    } catch (err: unknown) {
-      if (err instanceof Error) {
-        handleError("Something went wrong. Please try again. " + err.message);
-      } else {
-        handleError("An unknown error occurred.");
-      }
-    }
+    await handleAuth("credentials", values);
   }
 
   return (
