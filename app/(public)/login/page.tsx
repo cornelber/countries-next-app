@@ -17,7 +17,7 @@ export default function LoginPage() {
         <p className="text-gray-600 dark:text-gray-400 text-center mb-6">
           Sign in to explore countries and plan your next adventure.
         </p>
-        <div className="grid grid-cols-2 gap-6 px-6">
+        <div className="grid max-sm:grid-cols-1 grid-cols-2 gap-4 px-6">
           <Button
             className="flex flex-wrap h-max"
             onClick={() =>
