@@ -1,8 +1,7 @@
 "use client";
 
 import { MessageCircleHeart, Home, SearchCode, Settings, Workflow } from "lucide-react";
-import { signOut, useSession } from "next-auth/react";
-import Image from "next/image";
+import { signOut } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import {
   Sidebar,
@@ -16,6 +15,7 @@ import {
   SidebarMenuItem,
 } from "@/components/ui/sidebar";
 import Link from "next/link";
+import { User } from "next-auth";
 
 interface SideLinksProps {
   title: string;
@@ -25,44 +25,36 @@ interface SideLinksProps {
 
 const items: SideLinksProps[] = [
   {
-    title: "Home",
-    url: "#",
+    title: "Overview",
+    url: "/dashboard",
     icon: Home,
   },
   {
     title: "Countries",
-    url: "#",
+    url: "/dashboard/country",
     icon: SearchCode,
   },
   {
     title: "Favorites",
-    url: "#",
+    url: "/dashboard/favorite",
     icon: MessageCircleHeart,
   },
   {
     title: "Settings",
-    url: "#",
+    url: "/dashboard/setting",
     icon: Settings,
   },
 ];
 
-export function AppSidebar() {
-  const { data: session } = useSession();
-  
+export function AppSidebar({user}:{user:User}) {
   return (
-    <Sidebar variant="floating" collapsible="icon">
+    <Sidebar variant="sidebar">
       <SidebarContent>
         <div className="flex items-center p-4">
-          <Image
-            src="https://placehold.co/40x40"
-            alt="User Profile"
-            width={40}
-            height={40}
-            className="rounded-full"
-          />
+          IM
           <div className="ml-3">
             <span className="text-sm font-semibold">
-              {session?.user?.username || "User"}
+              {user?.username || "User"}
             </span>
           </div>
         </div>
