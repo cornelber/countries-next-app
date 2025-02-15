@@ -1,4 +1,3 @@
-// options.ts
 import { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import GitHubProvider from "next-auth/providers/github";
@@ -68,10 +67,7 @@ export const options: NextAuthOptions = {
       return session;
     },
     async redirect({ url, baseUrl }) {
-      if (!url.startsWith(baseUrl)) {
-        return baseUrl + "/login";
-      }
-      return url;
+      return url.startsWith(baseUrl) ? url : `${baseUrl}/dashboard`;
     },
   },
   secret: process.env.NEXTAUTH_SECRET,
