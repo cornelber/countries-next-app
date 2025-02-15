@@ -4,7 +4,7 @@ export default function DashboardPage() {
 
   return (
     <div>
-      dashboard
+      dashboard page works!
     </div>
   );
 }
