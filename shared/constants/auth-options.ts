@@ -89,7 +89,7 @@ export const authOptions: AuthOptions = {
       if (session?.user) {
         session.user.id = token.id as string;
         session.user.name = token.username as string;
-        session.user.verified = token.verified as boolean;
+        
       }
       return session;
     },
