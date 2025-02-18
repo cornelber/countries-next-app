@@ -7,6 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "clean": "rm -rf ./node_modules",
+    "rebuild": "npm run clean && npm install && npm run build",
     "prisma:push": "prisma db push",
     "prisma:run": "prisma studio",
     "prisma:seed": "prisma db seed"
