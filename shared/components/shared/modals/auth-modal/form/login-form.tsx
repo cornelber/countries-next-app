@@ -7,7 +7,7 @@ import toast from "react-hot-toast";
 import { Title } from "../../../title";
 import { FormInput } from "../../../form";
 import { Button } from "@/shared/components/ui";
-import { useRouter } from "next/navigation";
+import { useRouter } from "nextjs-toploader/app"
 
 interface Props {
   onClose?: VoidFunction;
@@ -34,7 +34,8 @@ export const LoginForm: React.FC<Props> = ({ onClose }) => {
       if (!res?.ok) {
         throw new Error("Failed to sign in with credentials");
       }
-      router.replace("/dashboard");
+      
+      router.push("/dashboard");
 
       toast.success("You have successfully logged into your account.", {
         icon: "✅",

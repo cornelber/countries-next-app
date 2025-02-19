@@ -10,7 +10,7 @@ export const Providers: React.FC<React.PropsWithChildren> = ({ children }) => {
     <>
       <NextTopLoader />
       <SessionProvider>{children}</SessionProvider>
-      <Toaster />
+      <Toaster position="bottom-right" reverseOrder={false} />
     </>
   );
 };
