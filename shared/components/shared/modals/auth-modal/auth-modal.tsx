@@ -22,12 +22,12 @@ export const AuthModal: React.FC<Props> = ({ open, onClose }) => {
         <DialogTitle>country.</DialogTitle>
         <LoginForm onClose={handleClose} />
         <hr />
-        <div className="flex gap-2">
+        <div className="flex gap-4 items-center">
           <Button
             variant="outline"
             onClick={() =>
               signIn("github", {
-                callbackUrl: "/about",
+                callbackUrl: "/dashboard",
                 redirect: true,
               })
             }

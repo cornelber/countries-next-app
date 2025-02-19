@@ -7,10 +7,10 @@ async function up() {
     await prisma.user.createMany({
         data: [
             {
-                fullName: 'User',
+                fullName: 'Default User',
                 username: 'user',
                 password: hashSync('user', 10),
-                provider: 'CREDENTIALS',
+                provider: 'credentials',
                 verified: new Date(),
                 role: 'USER'
             },
@@ -18,7 +18,7 @@ async function up() {
                 fullName: 'Admin',
                 username: 'admin',
                 password: hashSync('admin', 10),
-                provider: 'CREDENTIALS',
+                provider: 'credentials',
                 verified: new Date(),
                 role: 'ADMIN'
             },
@@ -28,7 +28,7 @@ async function up() {
 
 // remove data
 async function down() {
-    await prisma.$executeRaw`TRUNCATE TABLE User RESTART IDENTITY CASCADE`;
+    await prisma.$executeRaw`TRUNCATE TABLE "User" RESTART IDENTITY CASCADE`;
 }
 
 async function main() {

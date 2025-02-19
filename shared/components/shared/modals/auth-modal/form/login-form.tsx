@@ -7,12 +7,14 @@ import toast from "react-hot-toast";
 import { Title } from "../../../title";
 import { FormInput } from "../../../form";
 import { Button } from "@/shared/components/ui";
+import { useRouter } from "next/navigation";
 
 interface Props {
   onClose?: VoidFunction;
 }
 
 export const LoginForm: React.FC<Props> = ({ onClose }) => {
+  const router = useRouter();
   const form = useForm<LoginSchemaType>({
     resolver: zodResolver(loginSchema),
     defaultValues: {
@@ -32,6 +34,7 @@ export const LoginForm: React.FC<Props> = ({ onClose }) => {
       if (!res?.ok) {
         throw new Error();
       }
+      router.replace("/dashboard");
 
       toast.success("You have successfully logged into your account.", {
         icon: "✅",
