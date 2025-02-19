@@ -32,7 +32,7 @@ export const LoginForm: React.FC<Props> = ({ onClose }) => {
 
 
       if (!res?.ok) {
-        throw new Error();
+        throw new Error("Failed to sign in with credentials");
       }
       router.replace("/dashboard");
 

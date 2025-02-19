@@ -7,12 +7,8 @@ import { redirect } from "next/navigation";
 export default async function DashboardPage() {
   const session = await getUserSession();
 
-  if (!session || !session.id) {
-    return redirect("/not-auth");
-  }
-
   const user = await prisma.user.findUnique({
-    where: { id: Number(session.id) },
+    where: { id: Number(session?.id) },
   });
 
   if (!user) {
@@ -21,6 +17,7 @@ export default async function DashboardPage() {
 
   return (
     <>
+    {/* sidebar */}
       Dashboard Page, hello {user.username}{" "}
       <TestSignOut />
     </>

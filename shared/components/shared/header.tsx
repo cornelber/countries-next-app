@@ -17,8 +17,6 @@ interface Props {
 
 export const Header: React.FC<Props> = ({ className }) => {
   const [openAuthModal, setOpenAuthModal] = useState<boolean>(false);
-
-
   return (
     <header className={cn("border-b", className)}>
       <Container className="flex items-center justify-between py-8 gap-4">
