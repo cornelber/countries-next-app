@@ -1,7 +1,9 @@
+"use client"
+
+import React from "react";
 import { Button } from "@/shared/components";
 import { Dialog, DialogContent, DialogTitle } from "@/shared/components/ui/dialog";
 import { signIn } from "next-auth/react";
-import React from "react";
 import { LoginForm } from "./form/login-form";
 
 interface Props {
